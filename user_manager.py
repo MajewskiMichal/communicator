@@ -28,11 +28,16 @@ def manage_users():
 
     cnx, cursor = connect_to_db()
 
-    u = User()
-    u.username = 'janusz'
-    u.email = 'janusz@gmail.com'
-    u.set_password('passat_b5', '1999')
-    u.save_to_db(cursor)
+    # u = User()
+    # u.username = 'janusz'
+    # u.email = 'janusz@gmail.com'
+    # u.set_password('passat_b5', '1999')
+    # u.save_to_db(cursor)
+
+    u = User.load_user_by_id(cursor, 1)
+    print(u.id)
+    print(u.email)
+    print(u.username)
 
     close_connection(cnx, cursor)
 

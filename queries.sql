@@ -1,5 +1,5 @@
 CREATE TABLE User (
-	id int AUTO_INCREMENT,
+	  id int AUTO_INCREMENT,
     email varchar(255) UNIQUE,
     username varchar(255),
     hashed_password varchar(60),
@@ -7,7 +7,7 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Message (
-	id int AUTO_INCREMENT,
+	  id int AUTO_INCREMENT,
     sender_id int NOT NULL,
     receiver_id int NOT NULL,
     content text,
