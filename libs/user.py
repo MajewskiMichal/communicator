@@ -27,7 +27,7 @@ class User:
 
     @staticmethod
     def load_user_by_id(cursor, id):
-        sql = 'SELECT * FROM User WHERE id=%s'
+        sql = 'SELECT * FROM User WHERE id=%s;'
         params = (id,)
         cursor.execute(sql, params)
         data = cursor.fetchone()
@@ -40,3 +40,19 @@ class User:
             u.__hashed_password = data[3]
             return u
         return None
+
+    @staticmethod
+    def load_all_users(cursor):
+        sql = 'SELECT * FROM User;'
+        cursor.execute(sql)
+        data = cursor.fetchall()
+
+        users = list()
+        for user in data:
+            u = User()
+            u.__id = user[0]
+            u.email = user[1]
+            u.username = user[2]
+            u.__hashed_password = user[3]
+            users.append(u)
+        return users
